@@ -268,83 +268,85 @@ class Instagram():
         else:
             system("cls")
             print(Fore.RED+'\nLütfen Önce Takip Edilen Listesini Al Seçeneğine Tıklayınız'+Style.RESET_ALL)
+    def Menu(self):
+        while True:
+            if(self.isLoggedIn):
+                print(Fore.GREEN+'\nİnstagrama Giriş Yapıldı '+Style.RESET_ALL)
+            else:
+                print(Fore.RED+'\nGiriş Yapılmadı '+Style.RESET_ALL) 
+            print(Fore.CYAN+"İnstagram App Menu".center(20,'*')+Style.RESET_ALL)
+            secim=int(input(f"1) İnstagrama Giriş Yap\n2) Takip Edilen Kullanıcıları İşlemleri\n3) Takipçi Sayısını Göster\n4) Geri Takip Etmeyen Kullanıcıları Kontrol Et\n5) Çıkış\nSeçim : "))
+            if secim==1:
+                system("cls")
+                self.signIn()
+            if secim==2:
+                system("cls") 
+                while True:
+                    print(Fore.CYAN+'\nTakip Edilen Kullanıcılar İşlemleri'.center(10,'*')+Style.RESET_ALL)
+                    takip_secim=int(input('1) Takip Edilen Kullanıcıların Listesini Al\n2) Takip Edilen Kullanıcıların Listesini Ve Sayısını Göster\n3) Giriş Yap \n4) Ana Menu\n5) Çıkış\nSeçim : '))
+                    if(takip_secim==1):
+                        self.getfollowing()
+                    if(takip_secim==2):
+                        self.display_following()
+                    if(takip_secim==3):
+                        self.signIn()
+                    if(takip_secim==4):
+                        break
+                    if(takip_secim==5):
+                        exit()
+            if secim==3:
+                system("cls")
+                while True:
+                    print(Fore.CYAN+'\nTakipçi İşlemleri'.center(10,'*')+Style.RESET_ALL)
+                    takip_secim=int(input('1) Takipçi Listesini Al\n2) Takipçi Listesini Ve Sayısını Göster\n3) Giriş Yap\n4) Ana Menu\n5) Çıkış\nSeçim : '))
+                    if(takip_secim==1):
+                        self.getFollowers()
+                    if(takip_secim==2):
+                        self.display_followers()
+                    if(takip_secim==3):
+                        self.signIn()
+                    if(takip_secim==4):
+                        break
+                    if(takip_secim==5):
+                        exit()
+            if secim==4:
+                system("cls")
+                while True:
+                    print(Fore.CYAN+'\nUnfollower İşlemleri'.center(10,'*')+Style.RESET_ALL)
+                    unf_secim=int(input('1) Unfollower Listesini Göster\n2) Takipten Çık (Bütün Kullanıcılar Tek Tek Sorulur) \n3) Belirtilen Kullanıcıları Takipten Çık\n4) Takipçi Listesini Al\n5) Takip Edilen Kullanıcıların Listesini Al\n6) Giriş Yap\n7) Ana Menu\n8) Çıkış\nSeçim : '))
+                    if(unf_secim==1):
+                        self.find_unfollowers()
+                    if(unf_secim==2):
+                        while True:
+                            system("cls")
+                            unf_secim_1=int(input('1) Bütün Takip Etmeyenleri Tek Tek Sor :(\n2) Kaldığın Yerden Devam Et\n'+Fore.YELLOW+"Seçiminiz :"+Style.RESET_ALL))
+                            if(unf_secim_1 == 1):
+                                if(self.isGetFollowers==True and self.isGetFollowing== True):
+                                    self.unfollow()
+                                else:
+                                    print('Eksik Bilgileri Tamamlayın')
+                            if(unf_secim_1 == 2):
+                                if(self.isGetFollowers==True and self.isGetFollowing== True):
+                                    self.unfollow_1()
+                                else:
+                                    print('Eksik Bilgileri Tamamlayın')
+
+                            else:
+                                break
+                        
+                    if(unf_secim==3):
+                        self.unfollowMulti()
+                    if(unf_secim==4):
+                        self.getFollowers()
+                    if(unf_secim==5):
+                        self.getfollowing()
+                    if(unf_secim==6):
+                        self.signIn()
+                    if(unf_secim==7):
+                        break
+                    if(unf_secim==8):
+                        exit()
+
 
 k1 = Instagram()
-while True:
-    if(k1.isLoggedIn):
-        print(Fore.GREEN+'\nİnstagrama Giriş Yapıldı '+Style.RESET_ALL)
-    else:
-        print(Fore.RED+'\nGiriş Yapılmadı '+Style.RESET_ALL) 
-    print(Fore.CYAN+"İnstagram App Menu".center(20,'*')+Style.RESET_ALL)
-    secim=int(input(f"1) İnstagrama Giriş Yap\n2) Takip Edilen Kullanıcıları İşlemleri\n3) Takipçi Sayısını Göster\n4) Geri Takip Etmeyen Kullanıcıları Kontrol Et\n5) Çıkış\nSeçim : "))
-    if secim==1:
-        system("cls")
-        k1.signIn()
-    if secim==2:
-        system("cls") 
-        while True:
-            print(Fore.CYAN+'\nTakip Edilen Kullanıcılar İşlemleri'.center(10,'*')+Style.RESET_ALL)
-            takip_secim=int(input('1) Takip Edilen Kullanıcıların Listesini Al\n2) Takip Edilen Kullanıcıların Listesini Ve Sayısını Göster\n3) Giriş Yap \n4) Ana Menu\n5) Çıkış\nSeçim : '))
-            if(takip_secim==1):
-                k1.getfollowing()
-            if(takip_secim==2):
-                k1.display_following()
-            if(takip_secim==3):
-                k1.signIn()
-            if(takip_secim==4):
-                break
-            if(takip_secim==5):
-                exit()
-    if secim==3:
-        system("cls")
-        while True:
-            print(Fore.CYAN+'\nTakipçi İşlemleri'.center(10,'*')+Style.RESET_ALL)
-            takip_secim=int(input('1) Takipçi Listesini Al\n2) Takipçi Listesini Ve Sayısını Göster\n3) Giriş Yap\n4) Ana Menu\n5) Çıkış\nSeçim : '))
-            if(takip_secim==1):
-                k1.getFollowers()
-            if(takip_secim==2):
-                k1.display_followers()
-            if(takip_secim==3):
-                k1.signIn()
-            if(takip_secim==4):
-                break
-            if(takip_secim==5):
-                exit()
-    if secim==4:
-        system("cls")
-        while True:
-            print(Fore.CYAN+'\nUnfollower İşlemleri'.center(10,'*')+Style.RESET_ALL)
-            unf_secim=int(input('1) Unfollower Listesini Göster\n2) Takipten Çık (Bütün Kullanıcılar Tek Tek Sorulur) \n3) Belirtilen Kullanıcıları Takipten Çık\n4) Takipçi Listesini Al\n5) Takip Edilen Kullanıcıların Listesini Al\n6) Giriş Yap\n7) Ana Menu\n8) Çıkış\nSeçim : '))
-            if(unf_secim==1):
-                k1.find_unfollowers()
-            if(unf_secim==2):
-                while True:
-                    system("cls")
-                    unf_secim_1=int(input('1) Bütün Takip Etmeyenleri Tek Tek Sor :(\n2) Kaldığın Yerden Devam Et\n'+Fore.YELLOW+"Seçiminiz :"+Style.RESET_ALL))
-                    if(unf_secim_1 == 1):
-                        if(k1.isGetFollowers==True and k1.isGetFollowing== True):
-                            k1.unfollow()
-                        else:
-                            print('Eksik Bilgileri Tamamlayın')
-                    if(unf_secim_1 == 2):
-                        if(k1.isGetFollowers==True and k1.isGetFollowing== True):
-                            k1.unfollow_1()
-                        else:
-                            print('Eksik Bilgileri Tamamlayın')
-
-                    else:
-                        break
-                
-            if(unf_secim==3):
-                k1.unfollowMulti()
-            if(unf_secim==4):
-                k1.getFollowers()
-            if(unf_secim==5):
-                k1.getfollowing()
-            if(unf_secim==6):
-                k1.signIn()
-            if(unf_secim==7):
-                break
-            if(unf_secim==8):
-                exit()
-
+k1.Menu()
