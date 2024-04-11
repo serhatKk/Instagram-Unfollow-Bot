@@ -232,7 +232,33 @@ class Instagram():
             else:
                 print(Fore.RED+'\nNot Logged In'+Style.RESET_ALL) 
             print(Fore.CYAN+"Instagram App Menu".center(20, '*')+Style.RESET_ALL)
-            choice = int(input(f"1) Log In to Instagram\n2) Operations on Followed Users\n3) Show Follower Count\n4) Check Users Not Following Back\n5) Exit\nChoice: "))
+            choice = int(input(f"0) GET UNFOLLOWERS AND SHOw \n1) Log In to Instagram\n2) Operations on Followed Users\n3) Show Follower Count\n4) Check Users Not Following Back\n5) Exit\nChoice: "))
+            
+            if choice==0:
+                system("cls")
+                self.signIn()
+                self.getFollowers()
+                self.getFollowing()
+                self.findUnfollowers()
+                while True:
+                    print(Fore.CYAN+'\nUnfollower Operations'.center(10, '*')+Style.RESET_ALL)
+                    unfollow_choice = int(input('1) Show Unfollower List\n2) Unfollow (Ask for Each User One by One) \n3) Unfollow Specified Users\n4) Get Followers List\n5) Get Following List\n6) Log In\n7) Main Menu\n8) Exit\nChoice: '))
+                    if unfollow_choice == 1:
+                        self.findUnfollowers()
+                    if unfollow_choice == 2:
+                        self.unfollow()                
+                    if unfollow_choice == 3:
+                        self.unfollowMulti()
+                    if unfollow_choice == 4:
+                        self.getFollowers()
+                    if unfollow_choice == 5:
+                        self.getFollowing()
+                    if unfollow_choice == 6:
+                        self.signIn()
+                    if unfollow_choice == 7:
+                        break
+                    if unfollow_choice == 8:
+                        exit()           
             if choice == 1:
                 system("cls")
                 self.signIn()
